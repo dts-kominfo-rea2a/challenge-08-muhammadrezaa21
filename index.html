@@ -42,21 +42,10 @@
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
       function fnClickHandler(toDoItem) {
         newItem = input.value;
-        
-        if(toDoItem instanceof KeyboardEvent){
-          if(toDoItem.key === 'Enter' && toDoItem.keyCode === 13){
-            const li = document.createElement('li');
-            li.innerHTML = newItem;
-            output.appendChild(li);
-            input.value = '';
-          }
-          else { return false}
-        }
-        // newItem = input.value;
-          const li = document.createElement('li');
-          li.innerHTML = newItem;
-          output.appendChild(li);
-          input.value = '';
+        const li = document.createElement('li');
+        li.innerHTML = newItem;
+        output.appendChild(li);
+        input.value = '';
       }
 
       // TODO: register event onclick / addEventListener untuk button
@@ -65,7 +54,14 @@
       
       // TODO: register event onkeypress / addEventListener untuk input
       // sehingga saat di input ditekan enter akan menjalankan fungsi fnClickHandler juga
-      document.addEventListener("keypress", fnClickHandler)
+      document.addEventListener(
+        "keypress",
+        (event) => {
+          if(event.key === 'Enter'){
+            fnClickHandler()
+          }
+        }
+        );
     </script>
   </body>
 </html>
