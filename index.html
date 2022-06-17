@@ -36,30 +36,27 @@
       let button = document.getElementById('todo-submit');
       let input = document.getElementById('todo-input');
       let output = document.getElementById('todo-output');
-      console.log(button);
-      console.log(input);
-      console.log(output);
 
       // TODO: Buatlah sebuah fungsi dengan nama fnClickHandler
       // Fungsi yang digunakan untuk menambahkan tulisan
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
       function fnClickHandler(toDoItem) {
+        newItem = input.value;
+        
         if(toDoItem instanceof KeyboardEvent){
           if(toDoItem.key === 'Enter' && toDoItem.keyCode === 13){
-            newItem = input.value;
             const li = document.createElement('li');
             li.innerHTML = newItem;
             output.appendChild(li);
             input.value = '';
           }
           else { return false}
-        } else{
-          newItem = input.value;
-            const li = document.createElement('li');
-            li.innerHTML = newItem;
-            output.appendChild(li);
-            input.value = '';
         }
+        // newItem = input.value;
+          const li = document.createElement('li');
+          li.innerHTML = newItem;
+          output.appendChild(li);
+          input.value = '';
       }
 
       // TODO: register event onclick / addEventListener untuk button
